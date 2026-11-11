@@ -63,6 +63,9 @@ const luckyItem = document.getElementById("luckyItem");
 const luckyColor = document.getElementById("luckyColor");
 const luckyNumber = document.getElementById("luckyNumber");
 
+const DRAW_DURATION_MS = 800;
+let isDrawing = false;
+
 // ランダムに運勢を1つ選ぶ抽選処理
 function drawOmikuji() {
   const index = Math.floor(Math.random() * RESULTS.length);
@@ -88,7 +91,32 @@ function showResult(result) {
   drawButton.textContent = "もう一度引く";
 }
 
-// ボタンを押したときにおみくじを引いて結果を表示する
+// 演出中はボタンを無効にし、終了後に結果と補足情報を一緒に表示する
 drawButton.addEventListener("click", () => {
-  showResult(drawOmikuji());
+  if (isDrawing) {
+    return;
+  }
+
+  isDrawing = true;
+  drawButton.disabled = true;
+  drawButton.textContent = "抽選中…";
+  resultBox.setAttribute("aria-busy", "true");
+  fortuneDetails.hidden = true;
+  resultBox.classList.remove("result-daikichi", "result-chukichi", "result-shokichi");
+  resultText.textContent = "抽選中…";
+  resultBox.classList.add("is-drawing");
+
+  function finishDraw() {
+    resultBox.classList.remove("is-drawing");
+    showResult(drawOmikuji());
+    resultBox.setAttribute("aria-busy", "false");
+    drawButton.disabled = false;
+    isDrawing = false;
+  }
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    finishDraw();
+  } else {
+    window.setTimeout(finishDraw, DRAW_DURATION_MS);
+  }
 });
