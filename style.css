@@ -43,6 +43,7 @@ body {
   border: 2px solid #d1d5db;
   border-radius: 12px;
   background-color: #f9fafb;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .result-label {
@@ -58,6 +59,45 @@ body {
   font-weight: 700;
   line-height: 1.2;
   color: #111827;
+}
+
+.result-box.result-daikichi {
+  border-color: #10b981;
+  background-color: #ecfdf5;
+}
+
+.result-box.result-daikichi .result-label {
+  color: #047857;
+}
+
+.result-box.result-daikichi .result-text {
+  color: #065f46;
+}
+
+.result-box.result-chukichi {
+  border-color: #3b82f6;
+  background-color: #eff6ff;
+}
+
+.result-box.result-chukichi .result-label {
+  color: #1d4ed8;
+}
+
+.result-box.result-chukichi .result-text {
+  color: #1e40af;
+}
+
+.result-box.result-shokichi {
+  border-color: #f97316;
+  background-color: #fff7ed;
+}
+
+.result-box.result-shokichi .result-label {
+  color: #c2410c;
+}
+
+.result-box.result-shokichi .result-text {
+  color: #9a3412;
 }
 
 .draw-button {
@@ -79,4 +119,30 @@ body {
 
 .draw-button:active {
   transform: translateY(1px);
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 16px;
+  }
+
+  .container {
+    padding: 24px 18px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .description {
+    font-size: 13.5px;
+  }
+
+  .result-box {
+    padding: 24px 14px;
+  }
+
+  .result-text {
+    font-size: 32px;
+  }
 }
