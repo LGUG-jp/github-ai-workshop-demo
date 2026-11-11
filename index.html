@@ -11,9 +11,28 @@
     <h1 class="title">おみくじアプリ</h1>
     <p class="description">ボタンを押して、今日の運勢を引いてみましょう。</p>
 
-    <section class="result-box" id="resultBox" aria-live="polite">
+    <section class="result-box" id="resultBox" aria-live="polite" aria-atomic="true">
       <p class="result-label">今日の運勢</p>
       <p class="result-text" id="resultText">まだ引いていません</p>
+      <div id="fortuneDetails" hidden>
+        <p class="fortune-comment" id="fortuneComment"></p>
+        <section class="fortune-section" aria-labelledby="detailHeading">
+          <h2 id="detailHeading">詳しい運勢</h2>
+          <dl class="fortune-list">
+            <div><dt>仕事運</dt><dd id="workFortune"></dd></div>
+            <div><dt>金運</dt><dd id="moneyFortune"></dd></div>
+            <div><dt>恋愛運</dt><dd id="loveFortune"></dd></div>
+          </dl>
+        </section>
+        <section class="fortune-section" aria-labelledby="luckyHeading">
+          <h2 id="luckyHeading">ラッキー情報</h2>
+          <dl class="fortune-list">
+            <div><dt>アイテム</dt><dd id="luckyItem"></dd></div>
+            <div><dt>カラー</dt><dd id="luckyColor"></dd></div>
+            <div><dt>数字</dt><dd id="luckyNumber"></dd></div>
+          </dl>
+        </section>
+      </div>
     </section>
 
     <button type="button" class="draw-button" id="drawButton">おみくじを引く</button>

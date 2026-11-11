@@ -100,6 +100,42 @@ body {
   color: #9a3412;
 }
 
+.fortune-comment {
+  margin: 20px 0 0;
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.fortune-section {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.fortune-section h2 {
+  margin: 0 0 12px;
+  font-size: 17px;
+}
+
+.fortune-list {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.fortune-list > div + div {
+  margin-top: 12px;
+}
+
+.fortune-list dt {
+  font-weight: 700;
+}
+
+.fortune-list dd {
+  margin: 2px 0 0;
+  overflow-wrap: anywhere;
+}
+
 .draw-button {
   width: 100%;
   min-height: 52px;
@@ -144,5 +180,33 @@ body {
 
   .result-text {
     font-size: 32px;
+  }
+}
+
+.draw-button:disabled {
+  background-color: #6b7280;
+  cursor: wait;
+}
+
+.result-box.is-drawing .result-text {
+  animation: draw-shake 0.2s ease-in-out infinite;
+}
+
+@keyframes draw-shake {
+  0%, 100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .result-box {
+    transition: none;
+  }
+
+  .result-box.is-drawing .result-text {
+    animation: none;
   }
 }
